@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_ATLAS_PASS": "Md1568457291430!",
+        "MONGO_ATLAS_USER": "jarielb",
+        "APP_URL": "localhost:3000"
+    }
+}

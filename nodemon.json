@@ -2,6 +2,7 @@
     "env": {
         "MONGO_ATLAS_PASS": "Md1568457291430!",
         "MONGO_ATLAS_USER": "jarielb",
-        "APP_URL": "localhost:3000"
+        "APP_URL": "localhost:3000",
+        "JWT_KEY": "token_key"
     }
 }

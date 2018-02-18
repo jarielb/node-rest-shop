@@ -57,9 +57,7 @@ router.get('/:order_id', (req, res, next) => {
             res
                 .status(200)
                 .json({
-                    doc: {
-                        ...omit(result._doc, '__v'),
-                    },
+                    ...omit(result._doc, '__v'),
                     request: {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/orders"
@@ -99,9 +97,7 @@ router.post('/', (req, res, next) => {
                     res
                         .status(201)
                         .json({
-                            doc: {
-                                ...omit(result._doc, '__v')
-                            },
+                            ...omit(result._doc, '__v'),
                             request: {
                                 type: "GET",
                                 url: "http://" + process.env.APP_URL + "/orders/" + result._id
@@ -178,7 +174,7 @@ router.delete('/', (req, res, next) => {
                             quantity: "Number"
                         }
                     },
-                    message: "Successfully deleted item."
+                    message: "Successfully all deleted items."
                 })
         })
         .catch(err => {

@@ -93,13 +93,13 @@ router.post('/login', (req, res, next) => {
             return res
                 .status(401)
                 .json({
-                    message: "Auth failed"
+                    message: "Login failed"
                 });
         };
         bcrypt.compare(req.body.password, user[0].password, (err, result) => {
             if(err) {
                 return res.status(401).json({
-                    message: "Auth failed"
+                    message: "Login failed"
                 })
             }
             if(result) {
@@ -113,12 +113,12 @@ router.post('/login', (req, res, next) => {
                 }
             );
                 return res.status(200).json({
-                    message: "Auth successful",
+                    message: "Login successful",
                     token: token
                 })
             }
             return res.status(401).json({
-                message: "Auth failed"
+                message: "Login failed"
             })
         })
     })

@@ -8,9 +8,11 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/users');
 
-mongoose.connect('mongodb://' + process.env.MONGO_ATLAS_USER + ':' + process.env.MONGO_ATLAS_PASS + '@node-rest-shop-shard-00-00-o44wf.mongodb.net:27017,node-rest-shop-shard-00-01-o' +
-    '44wf.mongodb.net:27017,node-rest-shop-shard-00-02-o44wf.mongodb.net:27017/test?s' +
-    'sl=true&replicaSet=node-rest-shop-shard-0&authSource=admin');
+// mongoose.connect('mongodb://' + process.env.MONGO_ATLAS_USER + ':' + process.env.MONGO_ATLAS_PASS + '@node-rest-shop-shard-00-00-o44wf.mongodb.net:27017,node-rest-shop-shard-00-01-o' +
+//     '44wf.mongodb.net:27017,node-rest-shop-shard-00-02-o44wf.mongodb.net:27017/test?s' +
+//     'sl=true&replicaSet=node-rest-shop-shard-0&authSource=admin');
+
+mongoose.connect('mongodb://localhost/node-rest-shop');
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'))

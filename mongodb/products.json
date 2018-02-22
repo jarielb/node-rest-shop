@@ -1,0 +1,14 @@
+{ 
+    "_id" : ObjectId("5a8ea1f8946f2c996070a21a"), 
+    "name" : "Kodiak", 
+    "price" : NumberInt(588), 
+    "image" : "uploads/1519297016750_21-Benefits-of-Having-a-Cat-Book8__880-1.jpg", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5a8ea250946f2c996070a21b"), 
+    "name" : "iMac 4k Retina", 
+    "price" : NumberInt(1200), 
+    "image" : "uploads/1519297104217_20171229_142031.jpg", 
+    "__v" : NumberInt(0)
+}

@@ -1,0 +1,12 @@
+{ 
+    "_id" : ObjectId("5a8ea1cc946f2c996070a218"), 
+    "email" : "jarielb96@gmail.com", 
+    "password" : "$2a$10$h0iOY3o7pdsBY7EM0QzAvukVRnq92ZG6WGIU1gWAPrV4wGksoISVC", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5a8ea1e8946f2c996070a219"), 
+    "email" : "jariel@idearobin.com", 
+    "password" : "$2a$10$lloA5g3Q1IqVT7YaR5pNO.TEExV.dikf2wsa5RG0Jqbf8mAP/DEy.", 
+    "__v" : NumberInt(0)
+}

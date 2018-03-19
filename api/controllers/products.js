@@ -22,6 +22,7 @@ exports.get_all = (req, res, next) => {
                         }
                     }
                 }),
+                status: 200,
                 message: 'Successfully fetched items.'
             }
             res
@@ -144,6 +145,32 @@ exports.delete = (req, res, next) => {
                         }
                     },
                     message: "Successfully deleted item."
+                });
+        })
+        .catch(err => {
+            res
+                .status(404)
+                .json({ error: err })
+        });
+}
+
+exports.delete_all = (req, res, next) => {
+    Product
+        .remove({})
+        .exec()
+        .then(result => {
+            res
+                .status(200)
+                .json({
+                    request: {
+                        type: "POST",
+                        url: "http://" + process.env.APP_URL + "/products",
+                        body: {
+                            name: "String",
+                            price: "Number"
+                        }
+                    },
+                    message: "Successfully deleted items."
                 });
         })
         .catch(err => {

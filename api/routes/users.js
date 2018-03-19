@@ -91,19 +91,21 @@ router.post('/login', (req, res, next) => {
     .then(user => {
         if(user.length < 1) {
             return res
-                .status(401)
+                .status(400)
                 .json({
-                    message: "Login failed"
+                    message: "Login failed",
+                    status: 400
                 });
         };
         bcrypt.compare(req.body.password, user[0].password, (err, result) => {
             if(err) {
-                return res.status(401).json({
-                    message: "Login failed"
+                return res.status(400).json({
+                    message: "Login failed",
+                    status: 400
                 })
             }
             if(result) {
-               const token = jwt.sign({
+                const token = jwt.sign({
                     email: user[0].email,
                     user_id: user[0]._id
                 }, 
@@ -114,11 +116,13 @@ router.post('/login', (req, res, next) => {
             );
                 return res.status(200).json({
                     message: "Login successful",
-                    token: token
+                    token: token,
+                    status: 200,
                 })
             }
-            return res.status(401).json({
-                message: "Login failed"
+            return res.status(400).json({
+                message: "Login failed",
+                status: 400
             })
         })
     })

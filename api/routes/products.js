@@ -43,6 +43,8 @@ router.post('/', upload.single('image'), checkAuth, ProductsController.create);
 
 router.patch('/:product_id', checkAuth, ProductsController.update);
 
+router.delete('/', checkAuth, ProductsController.delete_all);
+
 router.delete('/:product_id', checkAuth, ProductsController.delete);
 
 module.exports = router;

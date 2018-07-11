@@ -51,6 +51,7 @@ exports.get = (req, res, next) => {
                             type: "GET",
                             url: "http://" + process.env.APP_URL + "/products"
                         },
+                        status: 200,
                         message: 'Successfully fetched item.'
                     });
             } else {
@@ -87,6 +88,7 @@ exports.create = (req, res, next) => {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/products" + result._id
                     },
+                    status: 201,
                     message: 'Successfully created product.'
                 });
         })
@@ -117,6 +119,7 @@ exports.update = (req, res, next) => {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/products/" + id
                     },
+                    status: 200,
                     message: 'Successfully updated item.'
                 });
         })
@@ -144,6 +147,7 @@ exports.delete = (req, res, next) => {
                             price: "Number"
                         }
                     },
+                    status: 200,
                     message: "Successfully deleted item."
                 });
         })
@@ -170,6 +174,7 @@ exports.delete_all = (req, res, next) => {
                             price: "Number"
                         }
                     },
+                    status: 200,
                     message: "Successfully deleted items."
                 });
         })

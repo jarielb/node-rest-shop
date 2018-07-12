@@ -23,6 +23,7 @@ exports.get_all = (req, res, next) => {
                         }
                     }
                 }),
+                success: true,
                 message: 'Orders were fetched.'
             }
             res
@@ -33,6 +34,7 @@ exports.get_all = (req, res, next) => {
             res
                 .status(500)
                 .json({
+                    success: false,
                     error: err
                 })
         })
@@ -50,6 +52,7 @@ exports.get = (req, res, next) => {
                 return res
                     .status(404)
                     .json({
+                        success: false,
                         message: "Order not found"
                     });
             }
@@ -61,13 +64,17 @@ exports.get = (req, res, next) => {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/orders"
                     },
+                    success: true,
                     message: 'Successfully fetched item.'
                 });
         })
         .catch(err => {
             res
                 .status(500)
-                .json({error: err});
+                .json({
+                    error: err,
+                    success: false,
+                });
         });
 };
 
@@ -79,6 +86,7 @@ exports.create = (req, res, next) => {
                 return res
                     .status(404)
                     .json({
+                        success: false,
                         message: "Product not found."
                     });
 
@@ -101,6 +109,7 @@ exports.create = (req, res, next) => {
                                 type: "GET",
                                 url: "http://" + process.env.APP_URL + "/orders/" + result._id
                             },
+                            success: true,
                             message: 'Successfully created order.'
                         });
                 })
@@ -110,7 +119,8 @@ exports.create = (req, res, next) => {
                 .status(500)
                 .json({
                     message: "Product not found.",
-                    error: err
+                    error: err,
+                    success: false
                 })
         })
 };
@@ -119,6 +129,7 @@ exports.update = (req, res, next) => {
     res
         .status(200)
         .json({
+            success: true,
             message: 'Orders was PATCHED.',
             order_id: req.params.order_id
         });
@@ -144,6 +155,7 @@ exports.delete = (req, res, next) => {
                             quantity: "Number"
                         }
                     },
+                    success: true,
                     message: "Successfully deleted item."
                 })
         })
@@ -151,6 +163,7 @@ exports.delete = (req, res, next) => {
             res
                 .status(400)
                 .json({
+                    success: false,
                     error: err
                 })
         })
@@ -173,6 +186,7 @@ exports.delete_all = (req, res, next) => {
                             quantity: "Number"
                         }
                     },
+                    success: true,
                     message: "Successfully all deleted items."
                 })
         })
@@ -180,7 +194,8 @@ exports.delete_all = (req, res, next) => {
             res
                 .status(400)
                 .json({
-                    error: err
+                    error: err,
+                    success: false,
                 })
         })
 }

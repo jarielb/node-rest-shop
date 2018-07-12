@@ -16,13 +16,14 @@ exports.get_all = (req, res, next) => {
                 docs: docs.map(doc => {
                     return {
                         ...doc._doc,
+                        image: process.env.APP_URL + "/" + doc._doc.image,
                         request: {
                             type: 'GET',
                             url: "http://" + process.env.APP_URL + "/products/" + doc._id
                         }
                     }
                 }),
-                status: 200,
+                success: true,
                 message: 'Successfully fetched items.'
             }
             res
@@ -32,7 +33,10 @@ exports.get_all = (req, res, next) => {
         .catch(err => {
             res
                 .status(500)
-                .json({ error: err })
+                .json({
+                    error: err,
+                    success: false,
+                })
         })
 };
 
@@ -47,24 +51,29 @@ exports.get = (req, res, next) => {
                     .status(200)
                     .json({
                         ...omit(result._doc, '__v'),
+                        image: process.env.APP_URL + "/" + result._doc.image,
                         request: {
                             type: "GET",
                             url: "http://" + process.env.APP_URL + "/products"
                         },
-                        status: 200,
+                        success: true,
                         message: 'Successfully fetched item.'
                     });
             } else {
                 res
                     .status(404)
-                    .json({ _id: id, message: 'No valid entry found for provided ID.' });
+                    .json({
+                        _id: id,
+                        message: 'No valid entry found for provided ID.',
+                        success: false,
+                    });
             }
 
         })
         .catch(err => {
             res
                 .status(500)
-                .json({ error: err });
+                .json({ error: err, success: false });
         });
 };
 
@@ -88,14 +97,17 @@ exports.create = (req, res, next) => {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/products" + result._id
                     },
-                    status: 201,
+                    success: true,
                     message: 'Successfully created product.'
                 });
         })
         .catch(err => {
             res
                 .status(500)
-                .json({ error: err });
+                .json({
+                    error: err,
+                    success: false,
+                });
         });
 }
 
@@ -119,14 +131,17 @@ exports.update = (req, res, next) => {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/products/" + id
                     },
-                    status: 200,
+                    success: true,
                     message: 'Successfully updated item.'
                 });
         })
         .catch(err => {
             res
                 .status(500)
-                .json({ error: err })
+                .json({
+                    error: err,
+                    success: false,
+                })
         })
 };
 
@@ -147,14 +162,17 @@ exports.delete = (req, res, next) => {
                             price: "Number"
                         }
                     },
-                    status: 200,
+                    success: true,
                     message: "Successfully deleted item."
                 });
         })
         .catch(err => {
             res
                 .status(404)
-                .json({ error: err })
+                .json({
+                    error: err,
+                    success: false,
+                })
         });
 }
 
@@ -174,13 +192,16 @@ exports.delete_all = (req, res, next) => {
                             price: "Number"
                         }
                     },
-                    status: 200,
+                    success: true,
                     message: "Successfully deleted items."
                 });
         })
         .catch(err => {
             res
                 .status(404)
-                .json({ error: err })
+                .json({
+                    error: err,
+                    success: false,
+                })
         });
 }

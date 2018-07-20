@@ -31,10 +31,6 @@ const upload = multer({
     fileFilter : fileFilter
 });
 
-const omit = require('../../helpers');
-
-const Product = require('../models/products');
-
 router.get('/', ProductsController.get_all);
 
 router.get('/:product_id', ProductsController.get);

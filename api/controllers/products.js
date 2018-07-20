@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const omit = require('../../helpers');
+const {omit} = require('../../helpers');
 
 const Order = require('../models/orders');
 const Product = require('../models/products');
@@ -46,7 +46,7 @@ exports.get = (req, res, next) => {
         .findById(id)
         .exec()
         .then(result => {
-            if (result) {
+            if(result) {
                 res
                     .status(200)
                     .json({
@@ -92,7 +92,7 @@ exports.create = (req, res, next) => {
             res
                 .status(201)
                 .json({
-                    ...omit(result._doc, '__v'),
+                    ...omit(result._doc, ['__v']),
                     request: {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/products" + result._id

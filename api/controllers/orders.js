@@ -59,7 +59,7 @@ exports.get = (req, res, next) => {
             res
                 .status(200)
                 .json({
-                    ...omit(result._doc, '__v'),
+                    ...omit(result._doc, ['__v']),
                     request: {
                         type: "GET",
                         url: "http://" + process.env.APP_URL + "/orders"
